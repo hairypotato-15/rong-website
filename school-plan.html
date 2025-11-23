@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郑凯荣 - 大学计划</title>
+    <!-- 引入字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --secondary-dark: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff2e63;
+            --highlight: #00f5d4;
+            --youth-color: #ffd166; /* 青春黄色点缀 */
+            --text-light: #eaeaea;
+            --text-muted: #a0a0a0;
+            --border-radius: 8px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2300f5d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>'), auto;
+        }
+
+        /* 鼠标花朵效果 */
+        .flower {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out forwards;
+            font-size: 18px;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-25px) rotate(360deg); }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--highlight);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background-color: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(0, 245, 212, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 头部横幅 */
+        .header-banner {
+            margin-top: 80px;
+            height: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-dark) 0%, rgba(26, 26, 46, 0.7) 50%, rgba(26, 26, 46, 0) 100%);
+            display: flex;
+            align-items: center;
+            padding-left: 60px;
+        }
+
+        .banner-title {
+            font-size: 2.8rem;
+            color: var(--youth-color);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 209, 102, 0.3);
+        }
+
+        .banner-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+        }
+
+        /* 主要内容区 */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--highlight);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--youth-color);
+            border-radius: 3px;
+            box-shadow: 0 0 10px var(--youth-color);
+        }
+
+        /* 大学四年时间轴 */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 80px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-dark);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--youth-color);
+            border: 4px solid var(--secondary-dark);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(255, 209, 102, 0.5);
+        }
+
+        .timeline-left {
+            left: 0;
+        }
+
+        .timeline-right {
+            left: 50%;
+        }
+
+        .timeline-left::after {
+            right: -12px;
+        }
+
+        .timeline-right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--secondary-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 245, 212, 0.1);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--highlight);
+        }
+
+        .year-title {
+            font-size: 1.8rem;
+            color: var(--youth-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .year-title i {
+            color: var(--highlight);
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .timeline-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .timeline-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-weight: bold;
+        }
+
+        .timeline-img {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .timeline-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover .timeline-img img {
+            transform: scale(1.05);
+        }
+
+        /* 大学生活补充 */
+        .campus-life {
+            background-color: rgba(22, 33, 62, 0.7);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 245, 212, 0.1);
+        }
+
+        .life-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .life-text {
+            flex: 2;
+        }
+
+        .life-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .highlight-text {
+            color: var(--youth-color);
+            font-weight: 500;
+        }
+
+        .life-img {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+        }
+
+        .life-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .life-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 技能进度条 */
+        .skills-section {
+            margin-bottom: 80px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background-color: var(--secondary-dark);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 245, 212, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--highlight);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-name i {
+            color: var(--youth-color);
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .progress-low {
+            background-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .progress-medium {
+            background-color: var(--youth-color);
+            color: var(--youth-color);
+        }
+
+        .progress-high {
+            background-color: var(--highlight);
+            color: var(--highlight);
+        }
+
+        .progress-max {
+            background-color: #22c55e;
+            color: #22c55e;
+        }
+
+        /* 底部按钮区域 */
+        .bottom-buttons {
+            background-color: rgba(26, 26, 46, 0.3);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 245, 212, 0.1);
+            margin-bottom: 60px;
+        }
+
+        .buttons-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--highlight);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .buttons-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--youth-color);
+            border-radius: 2px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .custom-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: rgba(26, 26, 46, 0.7);
+            color: var(--text-light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 245, 212, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+        }
+
+        .custom-button i {
+            color: var(--highlight);
+            font-size: 1.2rem;
+        }
+
+        .custom-button:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+            border-color: var(--accent);
+        }
+
+        .custom-button:hover i {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 245, 212, 0.1);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .timeline-left::after,
+            .timeline-right::after {
+                left: 18px;
+            }
+
+            .timeline-right {
+                left: 0%;
+            }
+
+            .life-content {
+                flex-direction: column;
+            }
+
+            .life-img {
+                width: 100%;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-overlay {
+                padding-left: 30px;
+            }
+
+            .banner-title {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .year-title {
+                font-size: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-banner {
+                height: 220px;
+                margin-top: 100px;
+            }
+
+            .banner-title {
+                font-size: 1.8rem;
+            }
+
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+
+            .buttons-container {
+                gap: 20px;
+            }
+
+            .custom-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo"></div>
+            <div class="nav-links">
+                <a href="main.html">首页</a>
+                <a href="vlog.html">博客</a>
+                <a href="contact.html">联系方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部横幅 -->
+    <div class="container">
+        <div class="header-banner">
+            <img src="hust.jpg" alt="大学校园" class="banner-img">
+            <div class="banner-overlay">
+                <div>
+                    <h1 class="banner-title">我的大学计划</h1>
+                    <p class="banner-subtitle">四年时光，探索成长，既要学有所成，也要不负青春，留下美好回忆 ✨</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="main-content">
+            <h2 class="section-title">四年规划时间轴</h2>
+
+            <!-- 时间轴 -->
+            <div class="timeline">
+                <!-- 大一 -->
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h3 class="year-title"><i class="fas fa-seedling"></i> 大一 - 探索与打基础</h3>
+                        <ul class="timeline-list">
+                            <li>掌握编程基础，了解软件工程行业方向，明确自己的兴趣领域</li>
+                            <li>尝试各种项目和小实验，建立实践经验</li>
+                        </ul>
+                        <div class="timeline-img">
+                            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format" alt="大学新生生活">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大二 -->
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h3 class="year-title"><i class="fas fa-rocket"></i> 大二 - 积累经验与拓展能力</h3>
+                        <ul class="timeline-list">
+                            <li>系统学习前后端开发、算法和数据库等核心知识</li>
+                            <li>提升实战能力，参与课程项目和小型竞赛</li>
+                            <li>在课外活动中尝试自己的第一次，积攒经验</li>
+                        </ul>
+                        <div class="timeline-img">
+                            <img src="二.jpg" alt="学习与成长">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大三 -->
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h3 class="year-title"><i class="fas fa-briefcase"></i> 大三 - 实习与探索方向</h3>
+                        <ul class="timeline-list">
+                            <li>通过实习积累真实工作经验，了解行业需求</li>
+                            <li>学习团队合作模式，提升职场竞争力</li>
+                            <li>尝试小型个人项目，寻找论文或科研灵感</li>
+                        </ul>
+                        <div class="timeline-img">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600&auto=format" alt="实习与实践">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大四 -->
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h3 class="year-title"><i class="fas fa-graduation-cap"></i> 大四 - 成果与未来准备</h3>
+                        <ul class="timeline-list">
+                            <li>完成毕业论文或大型项目，顺利毕业</li>
+                            <li>提前规划就业或深造路径，积累必要证书与技能</li>
+                            <li>参加毕业典礼，为大学生活画上圆满句号</li>
+                        </ul>
+                        <div class="timeline-img">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format" alt="毕业与未来">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大学生活补充 -->
+            <section class="campus-life">
+                <h2 class="section-title">我的大学生活</h2>
+                <div class="life-content">
+                    <div class="life-text">
+                        <p>于此同时，我会积极融入大学生活，<span class="highlight-text">结识志同道合的新朋友</span>，参加各种社团和校园活动，发现属于自己的小圈子。</p>
+                        <p>周末会在校园或周边景点探索未知的趣味活动，用兴趣爱好丰富大学生活，拓展自己的视野。</p>
+                        <p>在空闲时间，约上朋友一起<span class="highlight-text">户外徒步、骑行，或去旅行拍摄美景</span>，让大学生活充满趣味与回忆。</p>
+                        <p>总的来说，就是要<span class="highlight-text">好好享受大学生活</span>，和朋友留下美好回忆，探索身边的自然风光和有趣的地方，让大学生活画上一个充实而精彩的句号！</p>
+                    </div>
+                    <div class="life-img">
+                        <img src="huazhong.jpg" alt="与大学朋友一起">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 技能展示 -->
+            <section class="skills-section">
+                <h2 class="section-title">当前技能水平</h2>
+                <div class="skills-grid">
+                    <!-- 编程技能 -->
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-code"></i> C语言</span>
+                            <span class="skill-level">一般</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-medium" style="width: 60%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-code"></i> C++</span>
+                            <span class="skill-level">弱</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-low" style="width: 30%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-language"></i> 英文能力</span>
+                            <span class="skill-level">较强</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-high" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fab fa-python"></i> Python</span>
+                            <span class="skill-level">进度中</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-low" style="width: 5%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fab fa-python"></i> Java</span>
+                            <span class="skill-level">一般</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-medium" style="width: 60%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 兴趣技能 -->
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-table-tennis"></i> 羽球</span>
+                            <span class="skill-level">一般</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-medium" style="width: 65%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-guitar"></i> 吉他</span>
+                            <span class="skill-level">弱（正在衰减）</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-low" style="width: 25%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-gamepad"></i> 王者荣耀</span>
+                            <span class="skill-level">4年玩家，曾经王者50星</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-max" style="width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name"><i class="fas fa-utensils"></i> 厨艺</span>
+                            <span class="skill-level">弱</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-low" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-muted);">
+                    游戏经验：双人成行、奇境幻影、Overcooked等大作均有涉猎 🎮
+                </p>
+            </section>
+
+            <!-- 底部按钮区域 -->
+            <div class="bottom-buttons">
+                <h3 class="buttons-title">查看更多内容</h3>
+                <div class="buttons-container">
+                    <a href="main.html" class="custom-button">
+                        <i class="fas fa-home"></i>
+                        <span>返回首页</span>
+                    </a>
+                    <a href="vlog.html" target="_blank" class="custom-button">
+                        <i class="fas fa-blog"></i>
+                        <span>博客文章</span>
+                    </a>
+                    <a href="contact.html" target="_blank" class="custom-button">
+                        <i class="fas fa-envelope"></i>
+                        <span>联系方式</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 页脚 -->
+            <footer>
+                <p>© 2025 郑凯荣 | 一名爱吃土豆的代码新手 | 享受大学，快乐成长</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // 鼠标花朵效果
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.6) return;
+            
+            const flowers = ['🌸', '🌹', '🌼', '🌺', '💐', '🌷', '🥀', '🌻', '🌿', '💮', '❀', '🌱'];
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+            
+            const size = Math.random() * 12 + 10;
+            flower.style.fontSize = `${size}px`;
+            
+            const colors = ['#ff2e63', '#00f5d4', '#f72585', '#4361ee', '#7209b7', '#ffd166', '#3a0ca3'];
+            flower.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            flower.style.left = `${e.clientX}px`;
+            flower.style.top = `${e.clientY}px`;
+            
+            document.body.appendChild(flower);
+            
+            setTimeout(() => {
+                flower.remove();
+            }, 1000);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 进度条动画
+        window.addEventListener('load', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
